@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, CheckCircle, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Instagram, CheckCircle, Youtube } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -77,9 +77,9 @@ export function ContactPage() {
   };
 
   const socialIcons = [
-    { icon: Facebook, label: "Facebook", href: socialLinks.facebook, color: "text-blue-700", hover: "hover:bg-blue-700", show: !!socialLinks.facebook },
     { icon: Instagram, label: "Instagram", href: socialLinks.instagram, color: "text-pink-600", hover: "hover:bg-pink-600", show: !!socialLinks.instagram },
-    { icon: Send, label: "Telegram", href: socialLinks.telegram, color: "text-blue-500", hover: "hover:bg-blue-500", show: !!socialLinks.telegram },
+    { icon: Send, label: "Telegram (Asosiy)", href: socialLinks.telegram, color: "text-sky-500", hover: "hover:bg-sky-500", show: !!socialLinks.telegram },
+    { icon: Send, label: "Telegram (Qabul)", href: socialLinks.telegramAdmission, color: "text-blue-600", hover: "hover:bg-blue-600", show: !!socialLinks.telegramAdmission },
     { icon: Youtube, label: "YouTube", href: socialLinks.youtube, color: "text-red-600", hover: "hover:bg-red-600", show: !!socialLinks.youtube }
   ].filter(s => s.show);
 

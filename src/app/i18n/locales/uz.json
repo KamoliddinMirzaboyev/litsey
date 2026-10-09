@@ -225,7 +225,11 @@
     "req5": "Tibbiy ma’lumotnoma (086-u shakl)",
     "portalTitle": "Ro'yxatdan o'tish portali",
     "portalDesc": "Qabul bo'yicha eng to'liq va rasmiy ma'lumotlarni my.edu.uz portalidan oling. Arizalar onlayn qabul qilinadi.",
-    "portalBtn": "MY.EDU.UZ PORTALI"
+    "portalBtn": "MY.EDU.UZ PORTALI",
+    "telegramBadge": "Rasmiy Qabul Kanali",
+    "telegramTitle": "Qabul jarayoni bo'yicha tezkor yangiliklar",
+    "telegramDesc": "Imtihon muddatlari, ro'yxatdan o'tish, saralash bosqichlari va natijalarni rasmiy Telegram kanalimizda kuzatib boring:",
+    "telegramBtn": "Kanalga a'zo bo'lish"
   },
   "teachers": {
     "pageSubtitle": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyining malakali va tajribali o'qituvchilar jamoasi",

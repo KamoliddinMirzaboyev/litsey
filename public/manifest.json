@@ -1,6 +1,6 @@
 {
-  "name": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi",
-  "short_name": "FDTU 1-AL",
+  "name": "FDTU 1-son AL",
+  "short_name": "FDTU 1-son AL",
   "description": "Farg‘ona Davlat Texnika Universiteti 1-son Akademik Litseyi rasmiy veb-sayti",
   "start_url": "/",
   "display": "standalone",
@@ -8,14 +8,22 @@
   "theme_color": "#0d89b1",
   "icons": [
     {
-      "src": "/logoicon1.png",
+      "src": "/pwa-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/logoicon1.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

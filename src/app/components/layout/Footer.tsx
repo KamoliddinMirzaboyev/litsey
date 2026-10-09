@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Phone, Mail, MapPin, Facebook, Instagram, Send, Youtube, Globe, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Send, Youtube, Globe, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../../hooks/useSettings';
 import { settingsService } from '../../services/settingsService';
@@ -14,10 +14,9 @@ export function Footer() {
   const contactInfo = settingsService.getContactInfo(settings);
 
   const socialIcons = [
-    { icon: Facebook, href: socialLinks.facebook, color: "hover:bg-blue-600", show: !!socialLinks.facebook },
-    { icon: Instagram, href: socialLinks.instagram, color: "hover:bg-pink-600", show: !!socialLinks.instagram },
-    { icon: Send, href: socialLinks.telegram, color: "hover:bg-sky-500", show: !!socialLinks.telegram },
-    { icon: Youtube, href: socialLinks.youtube, color: "hover:bg-red-600", show: !!socialLinks.youtube }
+    { icon: Instagram, href: socialLinks.instagram, color: "hover:bg-pink-600", show: !!socialLinks.instagram, title: "Instagram" },
+    { icon: Send, href: socialLinks.telegram, color: "hover:bg-sky-500", show: !!socialLinks.telegram, title: "Telegram" },
+    { icon: Youtube, href: socialLinks.youtube, color: "hover:bg-red-600", show: !!socialLinks.youtube, title: "YouTube" }
   ].filter(s => s.show);
 
   return (
@@ -27,11 +26,11 @@ export function Footer() {
           {/* About */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#0d89b1] to-[#0d89b1] rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg overflow-hidden p-1">
+              <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg overflow-hidden p-1">
                 {contactInfo.logo ? (
                   <ImageWithFallback src={contactInfo.logo} alt={siteName.short_name} className="w-full h-full" objectFit="contain" />
                 ) : (
-                  "FDTU"
+                  <img src="/logoicon.png" alt={siteName.short_name} className="w-full h-full object-contain" />
                 )}
               </div>
               <div>

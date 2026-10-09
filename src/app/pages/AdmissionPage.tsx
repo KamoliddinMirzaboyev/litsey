@@ -1,4 +1,4 @@
-import { Calendar, FileText, Users, CheckCircle, ExternalLink, Award, BookOpen, Download } from 'lucide-react';
+import { Calendar, FileText, Users, CheckCircle, ExternalLink, Award, BookOpen, Download, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
@@ -328,6 +328,42 @@ export function AdmissionPage() {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Official Admission Telegram Channel */}
+      <section className="py-16 bg-gradient-to-br from-sky-600 via-[#0d89b1] to-blue-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/15 via-transparent to-transparent pointer-events-none"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+              <div className="w-20 h-20 rounded-2xl bg-white text-[#0d89b1] flex items-center justify-center shrink-0 shadow-xl shadow-sky-900/30">
+                <Send size={38} className="translate-x-0.5 -translate-y-0.5 text-[#0d89b1]" />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-[11px] font-black uppercase tracking-widest mb-3 border border-white/30">
+                  <span className="w-2 h-2 bg-green-300 rounded-full animate-ping"></span>
+                  {t('admission.telegramBadge', 'Rasmiy Qabul Kanali')}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">
+                  {t('admission.telegramTitle', "Qabul jarayoni bo'yicha tezkor yangiliklar")}
+                </h3>
+                <p className="text-white/85 text-sm md:text-base font-medium mt-2 max-w-xl leading-relaxed">
+                  {t('admission.telegramDesc', "Imtihon muddatlari, ro'yxatdan o'tish, saralash bosqichlari va natijalarni rasmiy Telegram kanalimizda kuzatib boring:")}{' '}
+                  <span className="font-black text-white underline underline-offset-4 tracking-wider">@fdtu1alqabul</span>
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://t.me/fdtu1alqabul"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0d89b1] hover:bg-sky-50 rounded-2xl font-black uppercase tracking-[0.15em] text-sm shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl shrink-0 group"
+            >
+              <span>{t('admission.telegramBtn', "Kanalga a'zo bo'lish")}</span>
+              <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
           </div>
         </div>
       </section>

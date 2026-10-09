@@ -181,8 +181,14 @@ export function NewsDetailPage() {
               <div className="flex items-center gap-6">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Maqolani ulashish:</span>
                 <div className="flex gap-3">
-                  {['Telegram', 'Facebook'].map(platform => (
-                    <button key={platform} className="text-xs font-bold text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] dark:hover:text-[#0d89b1] transition-colors uppercase tracking-widest">
+                  {['Telegram'].map(platform => (
+                    <button 
+                      key={platform} 
+                      onClick={() => {
+                        window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(translation.title)}`, '_blank');
+                      }}
+                      className="text-xs font-bold text-gray-600 dark:text-gray-400 hover:text-[#0d89b1] dark:hover:text-[#0d89b1] transition-colors uppercase tracking-widest flex items-center gap-1.5"
+                    >
                       {platform}
                     </button>
                   ))}

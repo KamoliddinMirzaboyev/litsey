@@ -56,20 +56,25 @@ export const settingsService = {
   },
 
   getSocialLinks(settings: SiteSettings | null) {
+    const admissionChannel = 'https://t.me/fdtu1alqabul';
+    const instagramOfficial = 'https://www.instagram.com/fdtu1al.uz?igsh=MWJuMTJtZ28zOTlxMg==';
+
     if (!settings) {
       return {
         telegram: 'https://t.me/fdtu1al_uz',
-        instagram: 'https://instagram.com/fdtu1al.uz',
-        facebook: 'https://facebook.com',
-        youtube: 'https://youtube.com'
+        instagram: instagramOfficial,
+        facebook: null,
+        youtube: 'https://youtube.com',
+        telegramAdmission: admissionChannel
       };
     }
 
     return {
       telegram: settings.telegram || 'https://t.me/fdtu1al_uz',
-      instagram: settings.instagram || 'https://instagram.com/fdtu1al.uz',
-      facebook: settings.facebook || 'https://facebook.com',
-      youtube: settings.youtube || 'https://youtube.com'
+      instagram: settings.instagram || instagramOfficial,
+      facebook: null, // Facebook olib tashlandi (ishlatilmaydi)
+      youtube: settings.youtube || 'https://youtube.com',
+      telegramAdmission: admissionChannel
     };
   },
 

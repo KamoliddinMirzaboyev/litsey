@@ -5,7 +5,6 @@ import {
   Menu, 
   X, 
   ChevronDown,
-  Facebook,
   Instagram,
   Send,
   Youtube,
@@ -114,23 +113,18 @@ export function Header() {
 
               <div className="flex items-center gap-4 ml-6 pl-6 relative">
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-white/40 rounded-full"></div>
-                {socialLinks.facebook && (
-                  <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                    <Facebook size={16} />
-                  </a>
-                )}
                 {socialLinks.instagram && (
-                  <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="Instagram">
                     <Instagram size={16} />
                   </a>
                 )}
                 {socialLinks.telegram && (
-                  <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="Telegram">
                     <Send size={16} />
                   </a>
                 )}
                 {socialLinks.youtube && (
-                  <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" title="YouTube">
                     <Youtube size={16} />
                   </a>
                 )}
@@ -325,7 +319,6 @@ export function Header() {
                 {[
                   { icon: Instagram, href: socialLinks.instagram, color: "text-pink-600", show: !!socialLinks.instagram },
                   { icon: Send, href: socialLinks.telegram, color: "text-blue-500", show: !!socialLinks.telegram },
-                  { icon: Facebook, href: socialLinks.facebook, color: "text-blue-700", show: !!socialLinks.facebook },
                   { icon: Youtube, href: socialLinks.youtube, color: "text-red-600", show: !!socialLinks.youtube }
                 ].filter(s => s.show).map((social, idx) => (
                   <a 
