@@ -17,7 +17,8 @@ export function NewsSection() {
     const fetchNews = async () => {
       try {
         const data = await newsService.getAllNews();
-        setNews(data.results.slice(0, 3)); // Show only first 3 news on home page
+        const list: NewsItem[] = Array.isArray(data) ? data : (data?.results || []);
+        setNews(list.slice(0, 3)); // Show only first 3 news on home page
       } catch (error) {
         console.error('Error fetching news:', error);
       } finally {

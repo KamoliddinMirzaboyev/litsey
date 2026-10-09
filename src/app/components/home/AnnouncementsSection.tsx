@@ -15,8 +15,9 @@ export function AnnouncementsSection() {
     const fetchAnnouncements = async () => {
       try {
         const data = await announcementService.getAllAnnouncements(1);
+        const list: Announcement[] = Array.isArray(data) ? data : (data?.results || []);
         // Show only first 3 announcements on home page
-        setAnnouncements(data.results.slice(0, 3));
+        setAnnouncements(list.slice(0, 3));
       } catch (error) {
         console.error('Error fetching announcements:', error);
       } finally {

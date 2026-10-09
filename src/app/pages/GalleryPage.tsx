@@ -19,9 +19,10 @@ export function GalleryPage() {
     const fetchAlbums = async () => {
       try {
         const data = await galleryService.getAllAlbums();
-        const activeAlbums = data.results
+        const list: Album[] = Array.isArray(data) ? data : (data?.results || []);
+        const activeAlbums = list
           .filter(album => album.is_active)
-          .sort((a, b) => a.sort_order - b.sort_order);
+          .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setAlbums(activeAlbums);
       } catch (error) {
         console.error('Error fetching albums:', error);

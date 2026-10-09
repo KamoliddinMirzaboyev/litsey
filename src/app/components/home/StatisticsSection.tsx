@@ -28,8 +28,9 @@ export function StatisticsSection() {
     const fetchStats = async () => {
       try {
         const data = await statisticService.getStatistics();
+        const list: StatItem[] = Array.isArray(data) ? data : ((data as any)?.results || []);
         // Sort by sort_order
-        const sortedStats = [...data].sort((a, b) => a.sort_order - b.sort_order);
+        const sortedStats = [...list].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setStats(sortedStats);
       } catch (error) {
         console.error('Error fetching statistics:', error);

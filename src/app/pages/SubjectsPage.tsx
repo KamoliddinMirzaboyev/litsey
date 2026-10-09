@@ -14,8 +14,9 @@ export function SubjectsPage() {
     const fetchSubjects = async () => {
       try {
         const data = await admissionService.getSubjects();
+        const list: Subject[] = Array.isArray(data) ? data : ((data as any)?.results || []);
         // Sort by sort_order
-        const sortedSubjects = data.sort((a, b) => a.sort_order - b.sort_order);
+        const sortedSubjects = [...list].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setSubjects(sortedSubjects);
       } catch (error) {
         console.error('Error fetching subjects:', error);

@@ -20,13 +20,14 @@ export const departmentService = {
   },
 
   getTranslation(department: Department, lang: string) {
-    const { translations } = department;
+    const translations = department?.translations || ({} as any);
+    const fallback = { name: '', description: '' };
     
     // Map i18n codes to API codes
-    if (lang === 'kr') {
-      return translations.uz_cyrl || translations.uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
     }
     
-    return translations[lang as keyof typeof translations] || translations.uz;
+    return (translations as any)[lang] || translations.uz || fallback;
   }
 };

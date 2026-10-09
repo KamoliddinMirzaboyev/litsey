@@ -16,7 +16,8 @@ export function AnnouncementsPage() {
     const fetchAnnouncements = async () => {
       try {
         const data = await announcementService.getAllAnnouncements(1);
-        setAnnouncements(data.results);
+        const list = Array.isArray(data) ? data : (data?.results || []);
+        setAnnouncements(list);
       } catch (error) {
         console.error('Error fetching announcements:', error);
       } finally {

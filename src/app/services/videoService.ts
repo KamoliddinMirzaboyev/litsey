@@ -12,13 +12,14 @@ export const videoService = {
   },
 
   getTranslation(video: Video, lang: string): VideoTranslation {
-    const { translations } = video;
+    const translations = video?.translations || ({} as any);
+    const fallback: VideoTranslation = { title: '', description: '' };
 
-    if (lang === 'kr') {
-      return translations.uz_cyrl || translations.uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
     }
 
-    return translations[lang as keyof typeof translations] || translations.uz;
+    return (translations as any)[lang] || translations.uz || fallback;
   },
 };
 

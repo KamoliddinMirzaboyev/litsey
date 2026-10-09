@@ -21,12 +21,13 @@ export function NewsPage() {
       setLoading(true);
       try {
         const data = await newsService.getAllNews(page);
+        const items = Array.isArray(data) ? data : (data?.results || []);
         if (page === 1) {
-          setNews(data.results);
+          setNews(items);
         } else {
-          setNews(prev => [...prev, ...data.results]);
+          setNews(prev => [...prev, ...items]);
         }
-        setHasMore(!!data.next);
+        setHasMore(!!data?.next);
       } catch (error) {
         console.error('Error fetching news:', error);
       } finally {

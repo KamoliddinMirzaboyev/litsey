@@ -19,10 +19,11 @@ export function FAQSection() {
     const fetchFaqs = async () => {
       try {
         const data = await faqService.getFAQs();
+        const list: FAQItem[] = Array.isArray(data) ? data : ((data as any)?.results || []);
         // Filter active FAQs and sort by sort_order
-        const activeFaqs = data
+        const activeFaqs = list
           .filter(faq => faq.is_active)
-          .sort((a, b) => a.sort_order - b.sort_order);
+          .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setFaqs(activeFaqs);
       } catch (error) {
         console.error('Error fetching FAQs:', error);

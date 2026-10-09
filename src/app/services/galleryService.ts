@@ -20,13 +20,14 @@ export const galleryService = {
   },
 
   getTranslation(album: Album, lang: string) {
-    const { translations } = album;
+    const translations = album?.translations || ({} as any);
+    const fallback = { title: '', description: '' };
     
     // Map i18n codes to API codes
-    if (lang === 'kr') {
-      return translations.uz_cyrl || translations.uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
     }
     
-    return translations[lang as keyof typeof translations] || translations.uz;
+    return (translations as any)[lang] || translations.uz || fallback;
   }
 };

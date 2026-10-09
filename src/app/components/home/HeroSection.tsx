@@ -25,7 +25,8 @@ export function HeroSection() {
     const fetchSliders = async () => {
       try {
         const data = await sliderService.getSliders();
-        setSliders(data.filter(s => s.is_active).sort((a, b) => a.sort_order - b.sort_order));
+        const list: SliderItem[] = Array.isArray(data) ? data : ((data as any)?.results || []);
+        setSliders(list.filter(s => s.is_active).sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0)));
       } catch (error) {
         console.error('Error fetching sliders:', error);
       } finally {

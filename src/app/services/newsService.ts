@@ -20,15 +20,15 @@ export const newsService = {
   },
 
   getTranslation(news: NewsItem, lang: string): NewsTranslation {
-    const { translations } = news;
+    const translations = news?.translations || ({} as any);
+    const fallback: NewsTranslation = { title: '', content: '', short_description: '' };
     
     // Map i18n codes to API codes
-    // 'kr' in our app corresponds to 'uz_cyrl' in the API
-    if (lang === 'kr') {
-      return translations.uz_cyrl || translations.uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
     }
     
     // Default to 'uz' if translation for the requested language doesn't exist
-    return (translations as any)[lang] || translations.uz;
+    return (translations as any)[lang] || translations.uz || fallback;
   }
 };

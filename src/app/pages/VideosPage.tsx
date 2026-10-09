@@ -17,8 +17,9 @@ export function VideosPage() {
     const fetchVideos = async () => {
       try {
         const data = await videoService.getVideos();
-        const activeVideos = data.results.filter((video) => video.is_active);
-        const sortedVideos = [...activeVideos].sort((a, b) => a.sort_order - b.sort_order);
+        const list: Video[] = Array.isArray(data) ? data : (data?.results || []);
+        const activeVideos = list.filter((video) => video.is_active);
+        const sortedVideos = [...activeVideos].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setVideos(sortedVideos);
       } catch (error) {
         console.error('Error fetching videos:', error);

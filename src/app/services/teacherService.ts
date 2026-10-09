@@ -20,9 +20,11 @@ export const teacherService = {
   },
 
   getTranslation(teacher: Teacher, lang: string): TeacherTranslation {
-    const { translations } = teacher;
-    
-    // Default to 'uz' if translation for the requested language doesn't exist
-    return (translations as any)[lang] || translations.uz;
+    const translations = teacher?.translations || ({} as any);
+    const fallback: TeacherTranslation = { full_name: teacher?.full_name || '', position: '', bio: '', education: '', achievements: '' };
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
+    }
+    return (translations as any)[lang] || translations.uz || fallback;
   }
 };

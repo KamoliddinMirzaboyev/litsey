@@ -12,14 +12,15 @@ export const statisticService = {
   },
 
   getTranslation(stat: StatItem, lang: string): StatTranslation {
-    const { translations } = stat;
+    const translations = stat?.translations || ({} as any);
+    const fallback: StatTranslation = { title: '' };
     
     // Map i18n codes to API codes
-    if (lang === 'kr') {
-      return translations.uz_cyrl || translations.uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return translations.uz_cyrl || translations.uz || fallback;
     }
     
     // Default to 'uz' if translation for the requested language doesn't exist
-    return (translations as any)[lang] || translations.uz;
+    return (translations as any)[lang] || translations.uz || fallback;
   }
 };

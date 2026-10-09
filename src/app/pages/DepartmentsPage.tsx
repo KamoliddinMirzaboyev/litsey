@@ -122,7 +122,7 @@ export function DepartmentsPage() {
                         <div className="px-6 md:px-8 pb-8 pt-2">
                           {/* Subjects List */}
                           <div className="space-y-0 border-t border-gray-200 dark:border-gray-800">
-                            {dept.subjects.map((subject, idx) => (
+                            {(dept.subjects || []).map((subject, idx) => (
                               <div 
                                 key={idx}
                                 className="py-4 border-b border-gray-100 dark:border-gray-800/50 text-gray-600 dark:text-gray-400 font-bold text-sm md:text-base hover:text-[#0d89b1] dark:hover:text-[#0d89b1] transition-colors pl-2"
@@ -140,7 +140,7 @@ export function DepartmentsPage() {
                               </div>
                               <div>
                                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{t('departments.head')}</p>
-                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.head_teacher.full_name}</p>
+                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.head_teacher?.full_name || '-'}</p>
                               </div>
                             </div>
 
@@ -150,7 +150,7 @@ export function DepartmentsPage() {
                               </div>
                               <div>
                                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{t('departments.room')}</p>
-                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.room_number}</p>
+                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.room_number || '-'}</p>
                               </div>
                             </div>
 
@@ -160,7 +160,7 @@ export function DepartmentsPage() {
                               </div>
                               <div>
                                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{t('departments.phone')}</p>
-                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.phone}</p>
+                                <p className="text-sm font-black text-gray-900 dark:text-white uppercase">{dept.phone || '-'}</p>
                               </div>
                             </div>
                           </div>

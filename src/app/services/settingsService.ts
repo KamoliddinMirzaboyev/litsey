@@ -50,9 +50,23 @@ export const settingsService = {
       };
     }
 
+    const fallback: SiteTranslations = {
+      short_name: lang === 'ru' ? '1-й АЛ при ФГТУ' : 'FDTU 1-son AL',
+      full_name: lang === 'ru' 
+        ? 'Академический лицей №1 при Ферганском государственном техническом университете' 
+        : "Farg'ona politexnika instituti qoshidagi 1-son akademik litsey",
+      address: lang === 'ru'
+        ? 'г. Фергана, массив Ёрмазор, ул. Мураббийlar, 19'
+        : "Farg'ona shahri, Yormozor hududi, Murabbiylar ko'chasi, 19-uy"
+    };
+
+    if (!settings.translations) {
+      return fallback;
+    }
+
     // Map kr to uz since API doesn't have kr translations
     const apiLang = lang === 'kr' ? 'uz' : lang;
-    return settings.translations[apiLang as keyof typeof settings.translations] || settings.translations.uz;
+    return settings.translations[apiLang as keyof typeof settings.translations] || settings.translations.uz || fallback;
   },
 
   getSocialLinks(settings: SiteSettings | null) {

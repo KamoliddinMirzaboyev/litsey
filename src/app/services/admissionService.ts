@@ -28,14 +28,14 @@ export const admissionService = {
   },
 
   getTranslation(item: AdmissionDocument | Subject, lang: string): any {
-    const { translations } = item;
+    const translations = item?.translations || {};
     
     // Map i18n codes to API codes
-    if (lang === 'kr') {
-      return (translations as any).uz_cyrl || (translations as any).uz;
+    if (lang === 'kr' || lang === 'uz_cyrl') {
+      return (translations as any).uz_cyrl || (translations as any).uz || {};
     }
     
     // Default to 'uz' if translation for the requested language doesn't exist
-    return (translations as any)[lang] || (translations as any).uz;
+    return (translations as any)[lang] || (translations as any).uz || {};
   }
 };

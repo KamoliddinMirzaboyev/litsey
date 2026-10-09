@@ -18,10 +18,11 @@ export function TeachersPage() {
     const fetchTeachers = async () => {
       try {
         const data = await teacherService.getAllTeachers();
+        const list: Teacher[] = Array.isArray(data) ? data : (data?.results || []);
         // Sort by sort_order and filter only active members
-        const activeTeachers = data.results
+        const activeTeachers = list
           .filter(teacher => teacher.is_active)
-          .sort((a, b) => a.sort_order - b.sort_order);
+          .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
         setTeachers(activeTeachers);
       } catch (error) {
         console.error('Error fetching teachers:', error);

@@ -106,7 +106,7 @@ export function AdmissionPage() {
                   className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 text-center"
                 >
                   <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">{t('admission.totalQuota', 'Umumiy kvota')}</div>
-                  <div className="text-4xl font-black text-[#0d89b1]">{info?.total_quota}</div>
+                  <div className="text-4xl font-black text-[#0d89b1]">{info?.total_quota ?? 0}</div>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ export function AdmissionPage() {
                   className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 text-center"
                 >
                   <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">{t('admission.grantQuota', 'Grant kvota')}</div>
-                  <div className="text-4xl font-black text-green-500">{info?.grant_quota}</div>
+                  <div className="text-4xl font-black text-green-500">{info?.grant_quota ?? 0}</div>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -125,7 +125,7 @@ export function AdmissionPage() {
                 >
                   <div className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">{t('admission.contractPrice', 'Shartnoma narxi')}</div>
                   <div className="text-2xl font-black text-orange-500">
-                    {info?.contract_price ? parseInt(info.contract_price).toLocaleString() : '0'} {t('common.sum', 'so\'m')}
+                    {info?.contract_price && !isNaN(Number(info.contract_price)) ? Number(info.contract_price).toLocaleString() : '0'} {t('common.sum', 'so\'m')}
                   </div>
                 </motion.div>
               </>
