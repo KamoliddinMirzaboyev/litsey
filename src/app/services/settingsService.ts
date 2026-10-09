@@ -112,7 +112,7 @@ export const defaultSettings: SiteSettings = {
   phone: "",
   email: "",
   website: "",
-  logo: "https://academiklitsey.pythonanywhere.com/media/settings/logoicon.png",
+  logo: "/logoicon.png",
   telegram: null,
   instagram: null,
   facebook: null,
