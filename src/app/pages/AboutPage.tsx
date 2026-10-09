@@ -3,14 +3,20 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/layout/SEO';
 
+import { useSettings } from '../hooks/useSettings';
+import { settingsService } from '../services/settingsService';
+
 export function AboutPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { settings } = useSettings();
+  const siteName = settingsService.getTranslation(settings, i18n.language);
+  const contactInfo = settingsService.getContactInfo(settings);
 
   const generalInfo = [
     {
       icon: Building2,
       label: t('about.director'),
-      value: 'Boltaboyev Ikboljon Tursunalievich'
+      value: 'Boltaboyev Iqboljon Tursunaliyevich'
     },
     {
       icon: Calendar,
@@ -20,12 +26,12 @@ export function AboutPage() {
     {
       icon: MapPin,
       label: t('about.address'),
-      value: t('footer.address')
+      value: siteName.address || t('footer.address')
     },
     {
       icon: Phone,
       label: t('about.phone'),
-      value: '+99873 241-33-07'
+      value: contactInfo.phone || '+998 73 244 55 66'
     },
     {
       icon: GraduationCap,

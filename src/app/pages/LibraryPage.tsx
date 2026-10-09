@@ -7,26 +7,26 @@ export function LibraryPage() {
 
   const resources = [
     {
-      title: 'Matematika darslik (10-sinf)',
-      author: 'A.Abduhamidov',
-      category: t('library.textbooks'),
-      format: 'PDF',
-    },
-    {
-      title: 'Fizika masalalari to\'plami',
-      author: 'B.Zunnunov',
+      title: "Matematika chuqurlashtirilgan to'garak qo'llanmasi",
+      author: "M.Qo'shnazarova",
       category: t('library.manuals'),
       format: 'PDF',
     },
     {
-      title: 'Ingliz tili IELTS tayyorgarlik',
-      author: 'Cambridge',
+      title: "O'zbek tili va adabiyotidan uslubiy qo'llanma",
+      author: 'O.Shamsutdinova, N.Maqsudova',
+      category: t('library.textbooks'),
+      format: 'PDF',
+    },
+    {
+      title: 'Ingliz tili: IELTS va CEFR tayyorgarlik kursi',
+      author: 'F.Nishonova, S.Xudoyberganova',
       category: t('library.languages'),
       format: 'PDF',
     },
     {
-      title: 'Kimyo laboratoriya ishlari',
-      author: 'S.Toshmatov',
+      title: "Kimyo fanidan laboratoriya va amaliy mashg'ulotlar",
+      author: 'D.Mamatova, S.Samijonov',
       category: t('library.practical'),
       format: 'PDF',
     },

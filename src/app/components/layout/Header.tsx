@@ -313,21 +313,24 @@ export function Header() {
 
           <div className="p-6 border-t dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
             <div className="flex flex-col gap-4">
-              <a href="tel:+998732413307" className="flex items-center gap-4 text-gray-700 dark:text-gray-300 font-black text-sm">
-                <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center justify-center text-[#0d89b1]">
-                  <Phone size={20} />
-                </div>
-                +99873 241-33-07
-              </a>
+              {contactInfo.phone && (
+                <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-4 text-gray-700 dark:text-gray-300 font-black text-sm">
+                  <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center justify-center text-[#0d89b1]">
+                    <Phone size={20} />
+                  </div>
+                  {contactInfo.phone}
+                </a>
+              )}
               <div className="flex items-center gap-3">
                 {[
-                  { icon: Instagram, href: "https://instagram.com/fdtu1al.uz", color: "text-pink-600" },
-                  { icon: Send, href: "https://t.me/fdtu1al_uz", color: "text-blue-500" },
-                  { icon: Facebook, href: "https://facebook.com", color: "text-blue-700" }
-                ].map((social, idx) => (
+                  { icon: Instagram, href: socialLinks.instagram, color: "text-pink-600", show: !!socialLinks.instagram },
+                  { icon: Send, href: socialLinks.telegram, color: "text-blue-500", show: !!socialLinks.telegram },
+                  { icon: Facebook, href: socialLinks.facebook, color: "text-blue-700", show: !!socialLinks.facebook },
+                  { icon: Youtube, href: socialLinks.youtube, color: "text-red-600", show: !!socialLinks.youtube }
+                ].filter(s => s.show).map((social, idx) => (
                   <a 
                     key={idx}
-                    href={social.href} 
+                    href={social.href!} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className={`w-12 h-12 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center justify-center ${social.color} hover:scale-110 transition-transform`}

@@ -1,4 +1,4 @@
-import { GraduationCap, Target, BookOpen } from 'lucide-react';
+import { GraduationCap, Target, BookOpen, FlaskConical, Globe, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
@@ -12,14 +12,19 @@ export function ProgramsPage() {
       description: t('programs.exactSciences.desc'),
     },
     {
-      icon: BookOpen,
-      title: t('programs.stem.title'),
-      description: t('programs.stem.desc'),
+      icon: FlaskConical,
+      title: t('programs.naturalSciences.title'),
+      description: t('programs.naturalSciences.desc'),
     },
     {
-      icon: Target,
-      title: t('programs.english.title'),
-      description: t('programs.english.desc'),
+      icon: Globe,
+      title: t('programs.foreignLanguages.title'),
+      description: t('programs.foreignLanguages.desc'),
+    },
+    {
+      icon: BookOpen,
+      title: t('programs.socialHumanities.title'),
+      description: t('programs.socialHumanities.desc'),
     },
   ];
 

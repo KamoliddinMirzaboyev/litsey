@@ -40,13 +40,13 @@ export const settingsService = {
   getTranslation(settings: SiteSettings | null, lang: string): SiteTranslations {
     if (!settings) {
       return {
-        short_name: lang === 'ru' ? 'FDTU AL' : 'FDTU AL',
+        short_name: lang === 'ru' ? '1-й АЛ при ФГТУ' : 'FDTU 1-son AL',
         full_name: lang === 'ru' 
-          ? 'Академический лицей №1 ФГТУ' 
-          : 'FDTU 1-son Akademik Litseyi',
+          ? 'Академический лицей №1 при Ферганском государственном техническом университете' 
+          : "Farg'ona politexnika instituti qoshidagi 1-son akademik litsey",
         address: lang === 'ru'
-          ? 'г. Фергана, МСГ Мурувват, ул. Ферганская, 84'
-          : "Farg'ona sh., Muruvvat MFY, Farg'ona ko'chasi, 84-uy"
+          ? 'г. Фергана, массив Ёрмазор, ул. Мураббийлар, 19'
+          : "Farg'ona shahri, Yormozor hududi, Murabbiylar ko'chasi, 19-uy"
       };
     }
 
@@ -76,17 +76,17 @@ export const settingsService = {
   getContactInfo(settings: SiteSettings | null) {
     if (!settings) {
       return {
-        phone: '+998 (73) 241-33-07',
-        email: 'info@fdtu1al.uz',
-        website: 'https://fdtu1al.uz',
+        phone: '+998 73 244 55 66',
+        email: 'info@fdtual.uz',
+        website: 'https://fdtual.uz',
         established_year: 2000
       };
     }
 
     return {
-      phone: settings.phone || '+998 (73) 241-33-07',
-      email: settings.email || 'info@fdtu1al.uz',
-      website: settings.website || 'https://fdtu1al.uz',
+      phone: settings.phone || '+998 73 244 55 66',
+      email: settings.email || 'info@fdtual.uz',
+      website: settings.website || 'https://fdtual.uz',
       established_year: settings.established_year || 2000,
       logo: settings.logo || '/logoicon.png'
     };
@@ -98,20 +98,20 @@ export const defaultSettings: SiteSettings = {
   id: 1,
   translations: {
     uz: {
-      short_name: "FDTU AL",
-      full_name: "FDTU Akademik Litsey",
-      address: ""
+      short_name: "FDTU 1-son AL",
+      full_name: "Farg'ona politexnika instituti qoshidagi 1-son akademik litsey",
+      address: "Farg'ona shahri, Yormozor hududi, Murabbiylar ko'chasi, 19-uy"
     },
     ru: {
-      short_name: "FDTU AL RU",
-      full_name: "FDTU AL RUS",
-      address: ""
+      short_name: "1-й АЛ при ФГТУ",
+      full_name: "Академический лицей №1 при Ферганском государственном техническом университете",
+      address: "г. Фергана, массив Ёрмазор, ул. Мураббийлар, 19"
     }
   },
   established_year: 2000,
-  phone: "",
-  email: "",
-  website: "",
+  phone: "+998 73 244 55 66",
+  email: "info@fdtual.uz",
+  website: "https://fdtual.uz",
   logo: "/logoicon.png",
   telegram: null,
   instagram: null,
