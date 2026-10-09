@@ -39,45 +39,68 @@ export function HeroSection() {
   // Show immediate fallback/default content while loading or if no sliders
   if (loading || sliders.length === 0) {
     return (
-      <section className="relative h-[80vh] md:h-[95vh] min-h-[600px] overflow-hidden bg-gray-950">
+      <section className="relative h-[85vh] md:h-[95vh] min-h-[620px] overflow-hidden bg-slate-950">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://www.samdu.uz/upload/cover-images/62b00cc62723f-62b00cc627241-62b00cc627242-62b00cc627243.png"
+            src="/litsey_bino.jpg"
             alt="FDTU 1-son Akademik Litseyi"
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-60"
             priority={true}
           />
-          <div className="absolute inset-0 bg-black/20 z-[1]"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d89b1]/90 via-[#0d89b1]/40 to-transparent md:w-[65%] z-[2]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d89b1]/40 via-transparent to-transparent z-[3]"></div>
-          <div className="absolute inset-0 bg-[#0d89b1]/5 mix-blend-overlay z-[4]"></div>
+          {/* Multi-layered dark contrast scrims */}
+          <div className="absolute inset-0 bg-slate-950/60 z-[1]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 md:w-[80%] to-transparent z-[2]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#052b38]/90 via-[#052b38]/50 to-transparent z-[3]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-transparent to-slate-950/50 z-[4]"></div>
         </div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-3xl text-white">
+        <div className="relative container mx-auto px-4 h-full flex items-center z-10">
+          <div className="max-w-4xl text-white">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-5 py-2 bg-[#0d89b1]/15 backdrop-blur-xl rounded-full text-xs font-black mb-8 uppercase tracking-[0.3em] border border-[#0d89b1]/40"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0d89b1] text-white rounded-full text-xs font-black mb-6 md:mb-8 uppercase tracking-[0.25em] shadow-xl border border-white/20"
             >
-              <span className="w-2 h-2 bg-[#0d89b1] rounded-full animate-pulse"></span>
+              <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse shadow-[0_0_10px_#fff]"></span>
               {t('home.heroBadge', 'LITSEYIMIZNING YANGI DAVRI')}
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-7xl font-black mb-6 leading-tight uppercase"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] uppercase text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
             >
               {t('home.heroTitle')}
             </motion.h1>
-            <motion.p 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg md:text-2xl text-gray-200 mb-10 font-bold opacity-90 max-w-2xl border-l-4 border-[#0d89b1] pl-8 italic"
+              className="mb-8 md:mb-10 max-w-3xl bg-slate-950/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border-l-4 border-[#0d89b1] border-y border-r border-white/10 shadow-2xl"
             >
-              {t('home.heroDesc')}
-            </motion.p>
+              <p className="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                {t('home.heroDesc')}
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-4 md:gap-6"
+            >
+              <Link
+                to="/admission"
+                className="group/btn relative inline-flex items-center gap-3 md:gap-4 px-8 py-4 md:px-12 md:py-5 bg-[#0d89b1] text-white rounded-xl hover:bg-[#0b7396] transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm shadow-2xl"
+              >
+                {t('home.admissionBtn')}
+                <ChevronRight size={20} className="md:w-5 md:h-5 group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 bg-white/10 backdrop-blur-xl text-white rounded-xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm border border-white/20 shadow-xl"
+              >
+                {t('home.moreBtn')}
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -85,7 +108,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative h-[80vh] md:h-[95vh] min-h-[600px] overflow-hidden bg-gray-950 group">
+    <section className="relative h-[85vh] md:h-[95vh] min-h-[620px] overflow-hidden bg-slate-950 group">
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade, Parallax]}
         effect="fade"
@@ -125,43 +148,45 @@ export function HeroSection() {
                   <ImageWithFallback
                     src={slider.image}
                     alt={translation.title}
-                    className="w-full h-full object-cover transform-gpu slide-zoom-image"
+                    className="w-full h-full object-cover opacity-60 transform-gpu slide-zoom-image"
                     priority={index === 0}
                   />
                 </div>
-                {/* Optimized overlays: Brand color #0d89b1 gradient only on the left for text, clear image in the center/right */}
-                <div className="absolute inset-0 bg-black/10 z-[1]"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0d89b1]/90 via-[#0d89b1]/40 to-transparent md:w-[65%] z-[2]"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d89b1]/40 via-transparent to-transparent z-[3]"></div>
-                <div className="absolute inset-0 bg-[#0d89b1]/5 mix-blend-overlay z-[4]"></div>
+                {/* High contrast overlays for crystal-clear readability */}
+                <div className="absolute inset-0 bg-slate-950/60 z-[1]"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 md:w-[80%] to-transparent z-[2]"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#052b38]/90 via-[#052b38]/50 to-transparent z-[3]"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-transparent to-slate-950/50 z-[4]"></div>
               </div>
 
               {/* Content Container */}
               <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
                 <div className="max-w-4xl text-white">
-                    <div 
-                      data-swiper-parallax="-300"
-                      className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-[#0d89b1]/15 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-black mb-6 md:mb-8 uppercase tracking-[0.3em] border border-[#0d89b1]/40 shadow-[0_0_20px_rgba(13,137,177,0.2)]"
-                    >
-                      <span className="w-2 h-2 bg-[#0d89b1] rounded-full animate-pulse shadow-[0_0_10px_#0d89b1]"></span>
-                      {t('home.heroBadge', 'LITSEYIMIZNING YANGI DAVRI')}
-                    </div>
+                  <div 
+                    data-swiper-parallax="-300"
+                    className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 bg-[#0d89b1] text-white rounded-full text-[10px] md:text-xs font-black mb-6 md:mb-8 uppercase tracking-[0.25em] shadow-xl border border-white/20"
+                  >
+                    <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse shadow-[0_0_10px_#fff]"></span>
+                    {t('home.heroBadge', 'LITSEYIMIZNING YANGI DAVRI')}
+                  </div>
                   
                   <h1 
                     data-swiper-parallax="-500"
-                    className="text-4xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-8 leading-[1.1] tracking-tight uppercase"
+                    className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-8 leading-[1.1] tracking-tight uppercase text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
                   >
                     <span className="block text-white">
                       {translation.title}
                     </span>
                   </h1>
                   
-                  <p 
+                  <div
                     data-swiper-parallax="-700"
-                    className="text-lg md:text-2xl text-gray-200 mb-8 md:mb-12 leading-relaxed font-bold opacity-90 max-w-2xl border-l-4 border-[#0d89b1] pl-6 md:pl-8 italic"
+                    className="mb-8 md:mb-10 max-w-3xl bg-slate-950/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border-l-4 border-[#0d89b1] border-y border-r border-white/10 shadow-2xl"
                   >
-                    {translation.description}
-                  </p>
+                    <p className="text-base sm:text-lg md:text-xl text-slate-100 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                      {translation.description}
+                    </p>
+                  </div>
                   
                   <div 
                     data-swiper-parallax="-900"
@@ -169,15 +194,15 @@ export function HeroSection() {
                   >
                     <Link
                       to="/admission"
-                      className="group/btn relative inline-flex items-center gap-3 md:gap-4 px-8 py-4 md:px-12 md:py-6 bg-[#0d89b1] text-white rounded-xl hover:bg-[#0d89b1] transition-all duration-500 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm shadow-2xl"
+                      className="group/btn relative inline-flex items-center gap-3 md:gap-4 px-8 py-4 md:px-12 md:py-5 bg-[#0d89b1] text-white rounded-xl hover:bg-[#0b7396] transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm shadow-2xl"
                     >
                       {t('home.admissionBtn')}
-                      <ChevronRight size={20} className="md:w-6 md:h-6 group-hover/btn:translate-x-1 transition-transform" />
+                      <ChevronRight size={20} className="md:w-5 md:h-5 group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                     
                     <Link
                       to="/about"
-                      className="inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-6 bg-white/5 backdrop-blur-xl text-white rounded-xl hover:bg-white/10 transition-all duration-500 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm border border-white/10"
+                      className="inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 bg-white/10 backdrop-blur-xl text-white rounded-xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 font-black uppercase tracking-[0.2em] text-xs md:text-sm border border-white/20 shadow-xl"
                     >
                       {t('home.moreBtn')}
                     </Link>

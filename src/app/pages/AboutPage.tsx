@@ -130,7 +130,25 @@ export function AboutPage() {
             <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-6 uppercase tracking-[0.2em]">
               {t('about.history')}
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">{t('about.history')}</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">{t('about.history')}</h2>
+
+            {/* Official Decrees Box */}
+            <div className="mb-10 p-6 md:p-8 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl border-l-4 border-[#0d89b1] shadow-lg">
+              <h3 className="text-sm font-black uppercase text-[#0d89b1] tracking-widest mb-3">
+                {t('about.decreeTitle', 'Tashkil etilishining huquqiy asoslari:')}
+              </h3>
+              <ul className="space-y-3 text-base text-gray-800 dark:text-gray-200 font-medium">
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-[#0d89b1] mt-2 flex-shrink-0"></span>
+                  <span><strong>1998-yil 24-fevral:</strong> O‘zbekiston Respublikasi Vazirlar Mahkamasining 77-sonli “Akademik litseylar va kasb-hunar kollejlarini tashkil etish va ularning faoliyatini boshqarish to‘g‘risida”gi qarori.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-[#0d89b1] mt-2 flex-shrink-0"></span>
+                  <span><strong>2000-yil 1-avgust:</strong> Farg‘ona viloyati hokimligining O‘rta maxsus kasb-hunar ta’limi hududiy boshqarmasining 499-sonli xati va Farg‘ona shahar hokimining 2000-yil 8-avgustdagi 974-sonli qarori bilan Farg‘ona shahar Yormozor akademik litseyi nomi bilan ro‘yxatga olingan.</span>
+                </li>
+              </ul>
+            </div>
+
             <div className="space-y-6 text-lg text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               <p>{t('about.historyP1')}</p>
               <p>{t('about.historyP2')}</p>

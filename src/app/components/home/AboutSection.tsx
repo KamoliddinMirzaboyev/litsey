@@ -35,7 +35,7 @@ export function AboutSection() {
           <div className="relative" data-aos="fade-right">
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHN0dWR5aW5nJTIwY2xhc3Nyb29tfGVufDF8fHx8MTc3NTM1NzM2Nnww&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/litsey_bino.jpg"
                 alt={t('nav.about')}
                 className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -53,10 +53,18 @@ export function AboutSection() {
             <div className="inline-block px-5 py-2 bg-[#0d89b1]/10 text-[#0d89b1] rounded-full text-xs font-black mb-6 uppercase tracking-[0.2em]">
               {t('home.aboutTitle')}
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-8 leading-tight uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 leading-tight uppercase tracking-tight">
               {t('home.aboutSubtitle')}
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-lg font-medium">
+            <div className="p-4 md:p-5 bg-blue-50/80 dark:bg-blue-950/40 border-l-4 border-[#0d89b1] rounded-r-xl mb-6 shadow-sm">
+              <p className="text-xs font-black uppercase text-[#0d89b1] tracking-wider mb-1">
+                {t('home.decreeTitle', 'Asos hujjat:')}
+              </p>
+              <p className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
+                {t('home.decreeText', 'Yormozor akademik litseyi O‘zbekiston Respublikasi Vazirlar Mahkamasining 1998-yil 24-fevraldagi 77-sonli “Akademik litseylar va kasb-hunar kollejlarini tashkil etish va ularning faoliyatini boshqarish to‘g‘risida”gi qaroriga asosan tashkil topgan.')}
+              </p>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-base md:text-lg font-medium">
               {t('home.aboutDesc')}
             </p>
 
