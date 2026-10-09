@@ -1,6 +1,6 @@
 import { AnnouncementResponse, Announcement, AnnouncementTranslation } from '../types';
 
-const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
+import { API_BASE_URL } from '../../config/api';
 
 export const announcementService = {
   async getAllAnnouncements(page = 1): Promise<AnnouncementResponse> {

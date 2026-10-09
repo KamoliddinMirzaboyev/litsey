@@ -1,51 +1,31 @@
 import { createBrowserRouter } from 'react-router';
 import { Layout } from './components/layout/Layout';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { LeadershipPage } from './pages/LeadershipPage';
-import { TeachersPage } from './pages/TeachersPage';
-import { DepartmentsPage } from './pages/DepartmentsPage';
-import { GalleryPage } from './pages/GalleryPage';
-import { VideosPage } from './pages/VideosPage';
-import { InfrastructurePage } from './pages/InfrastructurePage';
-import { LibraryPage } from './pages/LibraryPage';
-import { PhotosPage } from './pages/PhotosPage';
-import { AdmissionPage } from './pages/AdmissionPage';
-import { NewsPage } from './pages/NewsPage';
-import { NewsDetailPage } from './pages/NewsDetailPage';
-import { AnnouncementsPage } from './pages/AnnouncementsPage';
-import { AnnouncementsDetailPage } from './pages/AnnouncementsDetailPage';
-import { ContactPage } from './pages/ContactPage';
-import { SubjectsPage } from './pages/SubjectsPage';
-import { ProgramsPage } from './pages/ProgramsPage';
-import { SchedulePage } from './pages/SchedulePage';
-import { NotFoundPage } from './pages/NotFoundPage';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     Component: Layout,
     children: [
-      { index: true, Component: HomePage },
-      { path: 'about', Component: AboutPage },
-      { path: 'leadership', Component: LeadershipPage },
-      { path: 'teachers', Component: TeachersPage },
-      { path: 'departments', Component: DepartmentsPage },
-      { path: 'gallery', Component: GalleryPage },
-      { path: 'videos', Component: VideosPage },
-      { path: 'infrastructure', Component: InfrastructurePage },
-      { path: 'subjects', Component: SubjectsPage },
-      { path: 'programs', Component: ProgramsPage },
-      { path: 'schedule', Component: SchedulePage },
-      { path: 'library', Component: LibraryPage },
-      { path: 'photos', Component: PhotosPage },
-      { path: 'admission', Component: AdmissionPage },
-      { path: 'news', Component: NewsPage },
-      { path: 'news/:slug', Component: NewsDetailPage },
-      { path: 'announcements', Component: AnnouncementsPage },
-      { path: 'announcements/:slug', Component: AnnouncementsDetailPage },
-      { path: 'contact', Component: ContactPage },
-      { path: '*', Component: NotFoundPage },
+      { index: true, lazy: async () => ({ Component: (await import('./pages/HomePage')).HomePage }) },
+      { path: 'about', lazy: async () => ({ Component: (await import('./pages/AboutPage')).AboutPage }) },
+      { path: 'leadership', lazy: async () => ({ Component: (await import('./pages/LeadershipPage')).LeadershipPage }) },
+      { path: 'teachers', lazy: async () => ({ Component: (await import('./pages/TeachersPage')).TeachersPage }) },
+      { path: 'departments', lazy: async () => ({ Component: (await import('./pages/DepartmentsPage')).DepartmentsPage }) },
+      { path: 'gallery', lazy: async () => ({ Component: (await import('./pages/GalleryPage')).GalleryPage }) },
+      { path: 'videos', lazy: async () => ({ Component: (await import('./pages/VideosPage')).VideosPage }) },
+      { path: 'infrastructure', lazy: async () => ({ Component: (await import('./pages/InfrastructurePage')).InfrastructurePage }) },
+      { path: 'subjects', lazy: async () => ({ Component: (await import('./pages/SubjectsPage')).SubjectsPage }) },
+      { path: 'programs', lazy: async () => ({ Component: (await import('./pages/ProgramsPage')).ProgramsPage }) },
+      { path: 'schedule', lazy: async () => ({ Component: (await import('./pages/SchedulePage')).SchedulePage }) },
+      { path: 'library', lazy: async () => ({ Component: (await import('./pages/LibraryPage')).LibraryPage }) },
+      { path: 'photos', lazy: async () => ({ Component: (await import('./pages/PhotosPage')).PhotosPage }) },
+      { path: 'admission', lazy: async () => ({ Component: (await import('./pages/AdmissionPage')).AdmissionPage }) },
+      { path: 'news', lazy: async () => ({ Component: (await import('./pages/NewsPage')).NewsPage }) },
+      { path: 'news/:slug', lazy: async () => ({ Component: (await import('./pages/NewsDetailPage')).NewsDetailPage }) },
+      { path: 'announcements', lazy: async () => ({ Component: (await import('./pages/AnnouncementsPage')).AnnouncementsPage }) },
+      { path: 'announcements/:slug', lazy: async () => ({ Component: (await import('./pages/AnnouncementsDetailPage')).AnnouncementsDetailPage }) },
+      { path: 'contact', lazy: async () => ({ Component: (await import('./pages/ContactPage')).ContactPage }) },
+      { path: '*', lazy: async () => ({ Component: (await import('./pages/NotFoundPage')).NotFoundPage }) },
     ],
   },
 ]);

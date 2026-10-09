@@ -21,7 +21,7 @@ export interface SiteSettings {
   youtube: string | null;
 }
 
-const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
+import { API_BASE_URL } from '../../config/api';
 
 export const settingsService = {
   async getSettings(): Promise<SiteSettings | null> {

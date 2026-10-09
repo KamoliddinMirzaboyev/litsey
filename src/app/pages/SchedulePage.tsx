@@ -1,31 +1,37 @@
-import { Calendar, Clock, Download, FileText, Loader2, Info, BookOpen, Coffee, Home, ChevronRight, Edit3 } from 'lucide-react';
+import { Download, FileText, Loader2, Home, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { scheduleService, ScheduleItem } from '../services/scheduleService';
 import { admissionService } from '../services/admissionService';
 import { AdmissionDocument } from '../types';
 import { Link } from 'react-router';
 
 export function SchedulePage() {
   const { t, i18n } = useTranslation();
-  const [documents, setDocuments] = useState<AdmissionDocument[]>([]);
+  const [schedules, setSchedules] = useState<ScheduleItem[]>([]);
+  const [fallbackDocs, setFallbackDocs] = useState<AdmissionDocument[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchDocuments = async () => {
+    const fetchData = async () => {
       try {
-        const data = await admissionService.getAdmissionDocuments();
-        // Sort documents by sort_order
-        const sortedData = [...data].sort((a, b) => a.sort_order - b.sort_order);
-        setDocuments(sortedData);
+        const schedData = await scheduleService.getSchedules();
+        if (schedData && schedData.length > 0) {
+          setSchedules(schedData);
+        } else {
+          // Fallback to admission documents if no timetable items exist yet
+          const docs = await admissionService.getAdmissionDocuments().catch(() => []);
+          setFallbackDocs(docs);
+        }
       } catch (error) {
-        console.error('Error fetching admission documents:', error);
+        console.error('Error fetching schedules:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchDocuments();
+    fetchData();
   }, []);
 
   if (loading) {
@@ -35,6 +41,9 @@ export function SchedulePage() {
       </div>
     );
   }
+
+  const hasSchedules = schedules.length > 0;
+  const hasFallback = fallbackDocs.length > 0;
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -62,6 +71,9 @@ export function SchedulePage() {
           >
             {t('nav.schedule')}
           </motion.h1>
+          <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-2 font-medium">
+            {t('schedule.pageSubtitle', "Litsey guruhlari va kurslari uchun dars jadvallari")}
+          </p>
         </div>
       </div>
 
@@ -69,8 +81,45 @@ export function SchedulePage() {
       <section className="py-12 md:py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-4">
-            {documents.length > 0 ? (
-              documents.map((doc, index) => {
+            {hasSchedules ? (
+              schedules.map((item, index) => {
+                const trans = scheduleService.getTranslation(item, i18n.language);
+                const fileUrl = scheduleService.getFileUrl(item.file);
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <a
+                      href={fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-6 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all group border border-gray-100 dark:border-gray-800"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 bg-[#0d89b1]/10 text-[#0d89b1] rounded-lg group-hover:bg-[#0d89b1] group-hover:text-white transition-colors">
+                          <FileText size={24} />
+                        </div>
+                        <div>
+                          <span className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
+                            {trans.title || "Dars jadvali"}
+                          </span>
+                          <p className="text-xs text-gray-400 mt-0.5 font-medium">
+                            PDF formatda yuklab olish
+                          </p>
+                        </div>
+                      </div>
+                      <div className="p-2.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:bg-[#0d89b1] group-hover:text-white transition-colors">
+                        <Download size={20} className="text-gray-400 group-hover:text-white" />
+                      </div>
+                    </a>
+                  </motion.div>
+                );
+              })
+            ) : hasFallback ? (
+              fallbackDocs.map((doc, index) => {
                 const trans = admissionService.getTranslation(doc, i18n.language);
                 return (
                   <motion.div
@@ -104,6 +153,7 @@ export function SchedulePage() {
               })
             ) : (
               <div className="text-center py-12">
+                <FileText className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
                 <p className="text-gray-500 dark:text-gray-400 font-medium">
                   Hozircha dars jadvali yuklanmagan.
                 </p>

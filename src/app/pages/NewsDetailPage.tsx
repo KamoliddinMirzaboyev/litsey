@@ -155,17 +155,18 @@ export function NewsDetailPage() {
 
           {/* Content Body */}
           <div className="px-0 md:px-4">
-            <div 
+            <div
               className="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
                 text-gray-800 dark:text-gray-200 
-                leading-[1.8] font-normal 
+                leading-[1.8] font-normal whitespace-pre-wrap
                 prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
                 prose-p:mb-8
                 prose-img:rounded-xl prose-img:shadow-md
                 prose-a:text-[#0d89b1] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-gray-900 dark:prose-strong:text-white prose-strong:font-bold"
-              dangerouslySetInnerHTML={{ __html: translation.content }}
-            />
+            >
+              {translation.content}
+            </div>
 
             {/* Bottom Navigation */}
             <footer className="mt-24 pt-10 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-8">

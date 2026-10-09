@@ -1,6 +1,11 @@
-import { StatItem } from '../types';
+export interface FallbackStatItem {
+  id: number;
+  value: string;
+  label: string;
+  icon: string;
+}
 
-export const statistics: StatItem[] = [
+export const statistics: FallbackStatItem[] = [
   {
     id: 1,
     value: '450+',

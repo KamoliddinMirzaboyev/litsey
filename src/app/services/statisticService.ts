@@ -1,6 +1,6 @@
 import { StatItem, StatTranslation } from '../types';
 
-const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
+import { API_BASE_URL } from '../../config/api';
 
 export const statisticService = {
   async getStatistics(): Promise<StatItem[]> {

@@ -1,6 +1,10 @@
-import { FAQItem } from '../types';
+export interface FallbackFAQItem {
+  id: number;
+  question: string;
+  answer: string;
+}
 
-export const faqData: FAQItem[] = [
+export const faqData: FallbackFAQItem[] = [
   {
     id: 1,
     question: 'faq.item1.question',

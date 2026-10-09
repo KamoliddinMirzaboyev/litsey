@@ -1,6 +1,6 @@
 import { AlbumResponse, Album } from '../types';
 
-const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
+import { API_BASE_URL } from '../../config/api';
 
 export const galleryService = {
   async getAllAlbums(page = 1): Promise<AlbumResponse> {

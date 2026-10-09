@@ -1,6 +1,6 @@
 import { Video, VideoTranslation, VideoResponse } from '../types';
 
-const API_BASE_URL = 'https://academiklitsey.pythonanywhere.com';
+import { API_BASE_URL } from '../../config/api';
 
 export const videoService = {
   async getVideos(): Promise<VideoResponse> {

@@ -146,10 +146,9 @@ export function AnnouncementsDetailPage() {
                 </div>
               </div>
 
-              <div 
-                className="prose prose-2xl dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-[1.8] font-medium"
-                dangerouslySetInnerHTML={{ __html: translation.content }}
-              />
+              <div className="prose prose-2xl dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-[1.8] font-medium whitespace-pre-wrap">
+                {translation.content}
+              </div>
 
               <div className="mt-20 pt-12 border-t border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-8">
                 <div className="flex items-center gap-6">
